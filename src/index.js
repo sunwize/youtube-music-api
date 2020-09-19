@@ -195,8 +195,8 @@ class YoutubeMusicApi {
     }
 
     getPlaylist(browseId, contentLimit = 100) {
-        if (_.startsWith(browseId, 'VL') || _.startsWith(browseId, 'PL')) {
-            _.startsWith(browseId, 'PL') && (browseId = 'VL' + browseId)
+        if (browseId) {
+            _.startsWith(browseId, 'VL') === false && (browseId = 'VL' + browseId)
             return new Promise((resolve, reject) => {
                 this._createApiRequest('browse', utils.buildEndpointContext('PLAYLIST', browseId))
                     .then(context => {
